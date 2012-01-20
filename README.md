@@ -1,7 +1,7 @@
 ## Retaliation - Launching Missiles at your Coworkers
 
-* Heavily based on retaliation.py, a python API for the same product, which comes with Jenkins integration
-* Available at https://github.com/codedance/Retaliation
+* Heavily based on [retaliation.py](https://github.com/codedance/Retaliation), a python API for the same product which comes with Jenkins integration
+
 
 ### Summary
 
