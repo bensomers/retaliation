@@ -24,9 +24,13 @@ Installation instructions taken from [here](http://www.jedi.be/blog/2009/11/11/r
 3. Open up the ruby-usb code, and replace extconf.rb with the following:
 ```ruby
 require 'mkmf' 
+
 find_header("usb.h", "/opt/local/include") 
+
 find_library("usb", nil, "/opt/local/lib") 
+
 have_library("usb", "usb_init") 
+
 create_makefile('usb')
 ```
 4. Run the following: ARCHFLAGS="-arch i386" ruby extconf.rb
