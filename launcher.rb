@@ -1,5 +1,7 @@
 # Heavily based on retaliation.py, a python API for the same product, which comes with Jenkins integration
 # available at https://github.com/codedance/Retaliation
+# Didn't actually reuse their code, but certainly paid attention to their approach,
+# and used their knowledge about the relevant USB signals to send.
 # This version's in Ruby, though, and its TeamCity integration will come separately.
 
 require 'usb'
@@ -17,10 +19,6 @@ class Launcher
   RIGHT   = 0x08
   FIRE    = 0x10
   STOP    = 0x20
-
-  TARGETING_DATA =  { 'bensomers' => [['right', 2]  , ['up', 0.5]],
-                      'danluchi'  => [['right', 0.5], ['down', 0.25]]
-                    }
 
   attr_accessor :device, :handle
 
@@ -94,9 +92,8 @@ class Launcher
     send_cmd(STOP)
   end
 
-  def send_aim(target)
+  def send_aim(coordinates)
     command('zero')
-    coordinates = TARGETING_DATA[target]
     script(coordinates) if coordinates
   end
 
