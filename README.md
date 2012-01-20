@@ -22,17 +22,15 @@ Installation instructions taken from [here](http://www.jedi.be/blog/2009/11/11/r
 1. Install libusb-compat via MacPorts. (I tried installing from source, couldn't get it to work, strongly recommend MacPorts here).
 2. Download ruby-usb: http://www.a-k-r.org/ruby-usb/
 3. Open up the ruby-usb code, and replace extconf.rb with the following:
-```ruby
-require 'mkmf' 
 
-find_header("usb.h", "/opt/local/include") 
+    ```ruby
+    require 'mkmf' 
+    find_header("usb.h", "/opt/local/include") 
+    find_library("usb", nil, "/opt/local/lib") 
+    have_library("usb", "usb_init") 
+    create_makefile('usb')
+    ```
 
-find_library("usb", nil, "/opt/local/lib") 
-
-have_library("usb", "usb_init") 
-
-create_makefile('usb')
-```
 4. Run the following: ARCHFLAGS="-arch i386" ruby extconf.rb
 5. make
 6. make install (might need rvmsudo)
