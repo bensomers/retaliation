@@ -3,6 +3,7 @@
 # Integrates with TeamCity to fire missiles at my coworkers
 
 require 'retaliation'
+
 class Retaliation
   
   TARGETING_DATA =  { 'bensomers' => [['right', 2]  , ['up', 0.5]],
