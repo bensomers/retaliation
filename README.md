@@ -1,11 +1,11 @@
-## Retaliation - Launching Missiles at your Coworkers
+## retaliation.rb - Launching Missiles at your Coworkers
 
 * Heavily based on [retaliation.py](https://github.com/codedance/Retaliation), a python API for the same product which comes with Jenkins integration
 
 
 ### Summary
 
-Retaliation is (so far) a comprehensive Ruby API for controlling a small foam-missile turret. Intended for use against coworkers who break the build, it responds to a wide variety of commands to control movement, targeting,
+retaliation.rb is (so far) a comprehensive Ruby API for controlling a small foam-missile turret. Intended for use against coworkers who break the build, it responds to a wide variety of commands to control movement, targeting,
 and firing. Separately, it will integrate with our TeamCity server to automatically target offenders.
 
 ### Hardware
