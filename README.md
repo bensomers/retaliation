@@ -31,9 +31,17 @@ Installation instructions taken from [here](http://www.jedi.be/blog/2009/11/11/r
     create_makefile('usb')
     ```
 
-4. Run the following: ARCHFLAGS="-arch i386" ruby extconf.rb
+4. Run the following, whether you're 32- or 64-bit: ARCHFLAGS="-arch i386" ruby extconf.rb
 5. make
-6. make install (might need rvmsudo)
-7. Should be working.
+6. Patch ruby-usb to catch "Result too large" errors. Open up lib/usb.rb and go to USB::DevHandle#get_string_simple. (In ruby-usb version 0.2, this should be line 413). This patch prevents errors of the form: Errno::ERANGE: Result too large - usb_get_string_simple). Apply the following patch:
+
+    ```ruby
+    <       rescue Errno::EPIPE, Errno::EFBIG, Errno::EPERM, Errno::ERANGE
+
+    >       rescue Errno::EPIPE, Errno::EFBIG, Errno::EPERM
+    ```
+
+7. make install (might need rvmsudo)
+8. Should be working.
 
 The API should work fine as long as your missile launcher is plugged in. You can use multiple launchers at the same time, though telling them apart might be tricky.

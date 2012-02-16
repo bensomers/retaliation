@@ -29,7 +29,7 @@ class Launcher
 
   def self.find
     launchers = USB.devices.select { |d| d.product && d.product.match(/USB\ Missile\ Launcher/) }.map { |d| Launcher.new(d) }
-    launchers.first if launchers.count == 1
+    launchers.count == 1 ? launchers.first : launchers
   end
 
   # Takes a command name and a value
@@ -54,8 +54,6 @@ class Launcher
       # If no value, or value too high, fire 1 missile
       value = 1 unless value && (1..4).include?(value)
       send_fire(value)
-    when 'target', 'aim'
-      send_aim(value)
     else
       raise("Unknown command: #{command}")
     end
@@ -90,11 +88,6 @@ class Launcher
     send_cmd(cmd)
     sleep(duration)
     send_cmd(STOP)
-  end
-
-  def send_aim(coordinates)
-    command('zero')
-    script(coordinates) if coordinates
   end
 
   def send_stored_command(instructions)
