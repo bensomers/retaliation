@@ -31,7 +31,7 @@ Installation instructions taken from [here](http://www.jedi.be/blog/2009/11/11/r
     create_makefile('usb')
     ```
 
-4. Run the following, whether you're 32- or 64-bit: ARCHFLAGS="-arch i386" ruby extconf.rb
+4. Run the following, with i386 or x86_64, for your architecture: ARCHFLAGS="-arch YOUR_ARCH_HERE" ruby extconf.rb
 5. make
 6. Patch ruby-usb to catch "Result too large" errors. Open up lib/usb.rb and go to USB::DevHandle#get_string_simple. (In ruby-usb version 0.2, this should be line 413). This patch prevents errors of the form: Errno::ERANGE: Result too large - usb_get_string_simple). Apply the following patch:
 
